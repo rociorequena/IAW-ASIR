@@ -31,7 +31,7 @@ function sumaARRAY(a, b, c) {
     return a + b + c;
 }
 function mediaPersonas() {
-    var personas = [{ edad: 40, nombre: "", trabajo: "informático" }, { edad: 30, nombre: "Angel", trabajo: "Ingeniero Agrónomo" }];
+    var personas = [{ edad: 40, nombre: "rocio", trabajo: "informático" }, { edad: 19, nombre: "rocio", trabajo: "Ingeniera informatica" }];
     console.log(personas.length);
     console.log(personas[0].edad + " " + personas[0].nombre);
     console.log(personas[0]);
