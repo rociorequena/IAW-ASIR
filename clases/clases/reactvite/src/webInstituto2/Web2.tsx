@@ -19,13 +19,12 @@ const galeriaAndalucia = [
   "/jaen.jpeg",
 
 ];
-
+  //Actividad pág 28 implementada en la web instituto que se pidio de tarea
 export default function Web2() {
   return (
     <Router>
       <Header />
       <Navigation />
-
       <main className="home-container">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -42,6 +41,68 @@ export default function Web2() {
     </Router>
   );
 }
+
+
+// Tarea pag 30. Lo quite para que mi pag del instituto funcionara como yo quisiera-
+
+// function Layout() {
+//     return (
+//         <>
+//             <Navbar />
+//             <div style={{ padding: "20px" }}>
+//                 {/* <Outlet /> principal: Renderiza Home, Gallery, NoPage o NewsOutletParent */}
+//                 <Outlet />
+//             </div>
+//         </>
+//     );
+// }
+
+// function Gallery() {
+//     return (
+//         <div style={{ border: '1px solid #28a745', padding: '15px' }}>
+//             <h2>📸 FOTOS - GALERÍA</h2>
+//             <p>Contenido de la galería.</p>
+//         </div>
+//     );
+// }
+
+// function NewsOutletParent() {
+//     return (
+//         <div style={{ border: '2px solid #ffc107', padding: '20px', backgroundColor: '#fffbe5' }}>
+//             <h3>🗞️ OUTLET - SECCIÓN PRINCIPAL</h3>
+//             <p>Este es el contenido de la ruta padre /outlet.</p>
+//             {/* <Outlet /> anidado: Renderiza el componente hijo (NewsSection) */}
+//             <Outlet />
+//         </div>
+//     );
+// }
+
+// function NewsSection() {
+//     const params = useParams();
+//     const tipo = params.tipo; 
+
+//     let titulo = '';
+//     let color = '';
+
+//     if (tipo === 'jefatura') {
+//         titulo = 'Noticias de Jefatura de Estudios';
+//         color = 'blue';
+//     } else if (tipo === 'igualdad') {
+//         titulo = 'Noticias de Igualdad';
+//         color = 'purple';
+//     } else {
+//         titulo = `Tipo de noticia no reconocido: ${tipo}`;
+//         color = 'gray';
+//     }
+    
+//     return (
+//         <div style={{ marginTop: '15px', border: `1px solid ${color}`, padding: '10px' }}>
+//             <h4 style={{ color: color }}>{titulo}</h4>
+//             <p>Visualizando las noticias para la sección **{tipo}**.</p>
+//         </div>
+//     ); 
+// }
+
 
 
 function Header() {
@@ -115,7 +176,7 @@ function Home() {
   );
 }
 
-
+//Actividad pág 28 implementada en la web instituto que se pidio de tarea
 function MySkills() {
   const params = useParams<{ nombre: string }>();
   return <h2>Parámetro introducido: {params.nombre}</h2>;

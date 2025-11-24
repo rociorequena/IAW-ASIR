@@ -25,7 +25,7 @@ export const ListarItems2= () => {
     );
 }
 
-
+//Actividad pág 22
 import json2 from '../heroes.json';
 export const ListarItems3= () => {
   function getItems(){ return json2.map((heroe,index) => {
