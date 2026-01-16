@@ -2,7 +2,7 @@
   width: 30px;
   height: 30px;
   border: 3px solid transparent;
-  border-bottom-color: #000 !important;
+  border-bottom-color: #000;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;

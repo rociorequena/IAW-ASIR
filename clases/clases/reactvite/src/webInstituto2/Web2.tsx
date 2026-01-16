@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route, useParams, Link } from "react-router-dom";
 import "./web2.css";
 import Card from "./card";
