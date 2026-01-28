@@ -1,0 +1,11 @@
+/*barra de navegación */
+.nav1 {
+  margin-bottom: 0 !important;
+  box-shadow: none;
+}
+
+/* botones de idioma */
+.nav2 {
+  display: flex;
+  gap: 0.5rem;
+}

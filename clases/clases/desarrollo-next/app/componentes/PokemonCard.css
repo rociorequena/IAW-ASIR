@@ -1,0 +1,13 @@
+.card1 { height:100%; 
+    text-align:center; 
+    padding:10px; 
+    transition:0.2s; }
+.card1:hover { transform:scale(1.03); }
+.card2 { width:100px;
+     height:100px; 
+     margin:0 auto; 
+     object-fit:contain; }
+.card3 { text-transform:capitalize; 
+    margin-top:10px; 
+    font-weight:bold; 
+    font-size:1rem; }

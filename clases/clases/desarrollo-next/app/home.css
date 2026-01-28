@@ -1,0 +1,6 @@
+.home1 { 
+    text-align:center; 
+    margin-top:50px; }
+.home2 { display:flex; 
+        justify-content:center; }
+.home3 { width:300px; }

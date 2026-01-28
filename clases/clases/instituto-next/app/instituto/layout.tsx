@@ -18,12 +18,10 @@ export default function InstitutoLayout({ children }: { children: React.ReactNod
 
           <Col md={4} className="sidebar-1">
             <aside className="d-flex flex-column gap-4 text-center">
-              
               <div>
                 <h5 className="tit1">BIBLIOTECA WEB</h5>
                 <img src="/biblioweb.png" alt="Biblioweb" className="img-sidebar" />
               </div>
-
               <img src="/biblioteca.png" alt="Biblioteca IES" className="img-sidebar" />
               <div className="mt-4">
                 <h5 className="tit">VÍDEO INSTITUTO</h5>
@@ -35,12 +33,10 @@ export default function InstitutoLayout({ children }: { children: React.ReactNod
                   </iframe>
                 </div>
               </div>
-
             </aside>
           </Col>
         </Row>
       </Container>
-
       <Footer />
     </div>
   );

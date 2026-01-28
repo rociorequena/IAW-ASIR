@@ -1,0 +1,14 @@
+.header1 {
+     position:fixed; 
+     top:0; width:100%; 
+     z-index:1000; 
+     background:white; }
+
+.header2 { 
+    background:#212529; 
+    color:white; 
+    text-align:center; 
+    padding:10px; }
+.header3 {
+     margin:0; 
+     font-size:1.5rem; }

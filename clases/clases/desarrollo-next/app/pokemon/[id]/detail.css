@@ -1,0 +1,20 @@
+.detail-container {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  min-height: 60vh;
+}
+.detail-card {
+  background: white; 
+  padding: 2rem; 
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+  text-align: center; 
+  width: 100%; 
+  max-width: 500px;
+}
+.detail-img { width: 200px; 
+    height: 200px; 
+    object-fit: contain; }
+.detail-stats { text-align: left; 
+    margin-top: 20px; }

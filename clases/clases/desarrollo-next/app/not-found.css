@@ -1,0 +1,15 @@
+/* Contenedor centrado */
+.error1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* número 404  */
+.error2 {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #dc3545;
+}

@@ -1,0 +1,16 @@
+/* Caja blanca contacto */
+.cont1 {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 3rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+/* Texto azul */
+.cont2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #0d6efd;
+}
