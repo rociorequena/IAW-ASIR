@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Evaluación - API NestJS</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f5f7fa; color: #333; }
+        h1, h2 { color: #2c3e50; }
+        .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="number"], input[type="date"] { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button:hover { background-color: #2980b9; }
+        .btn-success { background-color: #2ecc71; }
+        .btn-success:hover { background-color: #27ae60; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #34495e; color: white; }
+        .response-area { background-color: #2d3436; color: #55efc4; padding: 15px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; overflow-x: auto; max-height: 200px;}
+        .flex-container { display: flex; gap: 20px; flex-wrap: wrap;}
+        .flex-child { flex: 1; min-width: 300px; }
+    </style>
+</head>
+<body>
+    <h1>API NestJS - Evaluaciones TypeORM</h1>
+    
+    <div class="card">
+        <h2>Última respuesta de la API</h2>
+        <pre id="apiResponse" class="response-area">Esperando comandos...</pre>
+    </div>
+
+    <div class="flex-container">
+        <!-- SECCIÓN ALUMNOS -->
+        <div class="card flex-child">
+            <h2>Crear Alumno</h2>
+            <div class="form-group">
+                <label>NIF</label>
+                <input type="text" id="nif" placeholder="12345678A">
+            </div>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" id="nombre" placeholder="Rocío">
+            </div>
+            <div class="form-group">
+                <label>Apellido 1</label>
+                <input type="text" id="apellido1" placeholder="García">
+            </div>
+            <div class="form-group">
+                <label>Apellido 2</label>
+                <input type="text" id="apellido2" placeholder="López">
+            </div>
+            <div class="form-group">
+                <label>Grupo</label>
+                <input type="text" id="grupo" placeholder="ASIR 2">
+            </div>
+            <button onclick="crearAlumno()">➕ Crear Alumno</button>
+            <button class="btn-success" onclick="verAlumnos()">👁️ Ver todos los Alumnos</button>
+        </div>
+
+        <!-- SECCIÓN PRÁCTICAS -->
+        <div class="card flex-child">
+            <h2>Crear Práctica</h2>
+            <div class="form-group">
+                <label>Título</label>
+                <input type="text" id="tituloPractica" placeholder="Servidor Linux">
+            </div>
+            <div class="form-group">
+                <label>Dificultad</label>
+                <input type="text" id="dificultad" placeholder="Alta">
+            </div>
+            <button onclick="crearPractica()">➕ Crear Práctica</button>
+            
+            <hr style="margin:20px 0;">
+            
+            <h2>Asignar Práctica a Alumno (N:M)</h2>
+            <div class="form-group">
+                <label>ID Alumno</label>
+                <input type="number" id="idAlumnoRel" placeholder="1">
+            </div>
+            <div class="form-group">
+                <label>ID Práctica</label>
+                <input type="number" id="idPracticaRel" placeholder="1">
+            </div>
+            <div class="form-group">
+                <label>Nota obtenida</label>
+                <input type="number" id="notaRel" placeholder="8.5">
+            </div>
+            <button class="btn-success" onclick="asignarPractica()">🔗 Asignar Práctica</button>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000';
+
+        function mostrarRespuesta(data) {
+            document.getElementById('apiResponse').textContent = JSON.stringify(data, null, 2);
+        }
+
+        async function crearAlumno() {
+            const data = {
+                nif: document.getElementById('nif').value,
+                nombre: document.getElementById('nombre').value,
+                apellido1: document.getElementById('apellido1').value,
+                apellido2: document.getElementById('apellido2').value,
+                grupo: document.getElementById('grupo').value,
+            };
+            
+            const res = await fetch(`${API_URL}/alumno`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            mostrarRespuesta(await res.json());
+        }
+
+        async function verAlumnos() {
+            const res = await fetch(`${API_URL}/alumno`);
+            mostrarRespuesta(await res.json());
+        }
+
+        async function crearPractica() {
+            const data = {
+                titulo: document.getElementById('tituloPractica').value,
+                dificultad: document.getElementById('dificultad').value,
+            };
+            
+            const res = await fetch(`${API_URL}/practica`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            mostrarRespuesta(await res.json());
+        }
+
+        async function asignarPractica() {
+            const idAlumno = document.getElementById('idAlumnoRel').value;
+            const data = {
+                id_practica: parseInt(document.getElementById('idPracticaRel').value),
+                fecha: new Date().toISOString().split('T')[0],
+                nota: parseFloat(document.getElementById('notaRel').value)
+            };
+            
+            const res = await fetch(`${API_URL}/alumno/${idAlumno}/practica`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            mostrarRespuesta(await res.json());
+        }
+    </script>
+</body>
+</html>
